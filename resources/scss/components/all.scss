@@ -1,0 +1,8 @@
+.main-content {
+    @import "table";
+    @import "pagination";
+}
+
+@import "choices.scss";
+@import "filters";
+@import "form";

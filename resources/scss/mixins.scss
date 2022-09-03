@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@mixin generate-buttons($buttons) {
+    @each $type, $details in $buttons {
+        &-#{$type} {
+            @apply #{map.get($details, "classes")};
+
+            @if map.has-key($details, "default_modifier") {
+                @apply #{map.get(map.get($details, 'modifiers'), map.get($details, 'default_modifier'))};
+            }
+
+            @if map.has-key($details, "modifiers") {
+                @each $modifier, $classes in map.get($details, "modifiers") {
+                    &-#{$modifier} {
+                        @apply #{map.get($details, "classes")} #{$classes};
+
+                        @if map.has-key($details, "hover") {
+                            &:hover {
+                                @apply #{map.get($details, "hover")};
+                            }
+                        }
+                    }
+                }
+            }
+
+            @if map.has-key($details, "hover") {
+                &:hover {
+                    @apply #{map.get($details, "hover")};
+                }
+            }
+        }
+    }
+}

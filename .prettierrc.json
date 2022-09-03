@@ -1,0 +1,17 @@
+{
+    "printWidth": 80,
+    "tabWidth": 4,
+    "wrapAttributes": "auto",
+    "sortTailwindcssClasses": true,
+    "singleAttributePerLine": true,
+    "overrides": [
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "tabWidth": 4,
+                "parser": "blade",
+                "sortTailwindcssClasses": true
+            }
+        }
+    ]
+}

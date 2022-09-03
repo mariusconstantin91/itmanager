@@ -1,0 +1,75 @@
+.table {
+    $table_component: &;
+
+    @apply w-full;
+    &-layout.show-overflow {
+        overflow: visible;
+        overflow-x: visible;
+    }
+
+    // Desktop Layout
+    &-layout {
+        @apply relative w-full overflow-x-auto rounded-lg border bg-white;
+
+        // #{$table_component} {
+        //     &-head {
+        //         background-color: red !important;
+        //         $thead_component: #{$table_component}-head;
+        //         &-row {
+        //             @apply text-sm font-semibold text-black-soft bg-gray-600;
+
+        //             > #{$thead_component}-cell {
+        //                 @apply py-4;
+        //                 // &:first-child {
+        //                 //     @apply rounded-l;
+        //                 // }
+
+        //                 // &:last-child {
+        //                 //     @apply rounded-r;
+        //                 // }
+        //             }
+        //         }
+
+        //         &-cell {
+        //             @apply py-4;
+        //             user-select: none;
+        //         }
+        //     }
+
+        //     &-body {
+        //         @apply text-[15px] text-black-light;
+
+        //         &-row {
+        //             @apply border-b-2 border-gray-200;
+        //         }
+
+        //         &-cell {
+        //             @apply p-5;
+        //         }
+        //     }
+        // }
+    }
+
+    &-head {
+        @apply border-b border-gray-200 bg-gray-50 font-semibold uppercase text-black-500;
+        tr td {
+            @apply py-4 px-4;
+        }
+    }
+
+    &-body {
+        @apply text-sm font-normal text-black-100;
+        tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+        td {
+            @apply py-4 px-4;
+            &:last-child {
+                @apply text-blue-500;
+            }
+        }
+        .table-body-row {
+            @apply border-b border-gray-200;
+        }
+    }
+}

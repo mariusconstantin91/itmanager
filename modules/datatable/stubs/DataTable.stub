@@ -1,0 +1,122 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Builder;
+use {{ abstractDatatable }};
+use {{ namespacedModel }};
+
+/**
+ * Class {{ class }}
+ *
+ * @package App\DataTables
+ */
+class {{ class }} extends DataTable
+{
+    /**
+     * Model assosciated with this table.
+     *
+     * @var string
+    */
+    public string $model = {{ model }}::class;
+
+
+    /**
+     * Name of data table class.
+     *
+     * @var string
+     */
+    public string $name = '{{ class }}';
+
+    /**
+     * Initial sort direction of default column.
+     * Valid options: `desc` or `asc`
+     *
+     * @var string
+     */
+    public string $sortDir = 'desc';
+
+    /**
+     * Default colunn to sort by.
+     *
+     * @var string
+     */
+    public string $sortBy = 'created_at';
+
+    /**
+     * Wether to show full sort and filter queries in the URL.
+     *
+     * @var bool
+    */
+    public bool $hasQueryStrings = true;
+
+    /**
+     * Enable pagination.
+     *
+     * @var bool
+     */
+    public bool $paginate = true;
+
+    /**
+     * If pagination is true, maximum number of entities per page.
+     *
+     * @var int
+     */
+    public int $pageLength = 10;
+
+    /**
+     * Enable or disable search functionality.
+     *
+     * @var bool
+     */
+    public bool $enableSearch = true;
+
+    /**
+     * Enable or disable sorting functionality.
+     *
+     * @var bool
+     */
+    public bool $enableSorting = true;
+
+    /**
+     * Enable or disable filter functionality.
+     *
+     * @var bool
+     */
+    public bool $enableFilters = true;
+
+    /**
+     * Enable or disable resetting of filters.
+     *
+     * @var bool
+     */
+    public bool $enableResetFilters = true;
+
+    /**
+     * Initialisation method.
+     *
+     * @return void
+     */
+    public function init()
+    {
+        // Set your columns
+        $this->setColumns([]);
+
+        // Set your filters
+        $this->setFilters([]);
+
+        // Set your actions
+        $this->setActions([]);
+    }
+
+    /**
+     * Query builder method.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function query(Builder $query): Builder
+    {
+        return $query;
+    }
+}

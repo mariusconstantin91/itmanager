@@ -1,0 +1,63 @@
+.choices {
+    .choices__inner {
+        padding-bottom: 0px;
+        padding-top: 0px;
+        @apply rounded-md border border-gray-300 bg-transparent text-gray-500 focus:border-gray-300 font-medium;
+    }
+
+    .choices__input {
+        @apply bg-transparent text-sm  text-gray-500;
+    }
+
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
+        @apply z-20 w-full overflow-hidden rounded-lg rounded-t-none border border-t-0 border-gray-300 bg-white shadow-lg;
+    }
+    .choices__list--dropdown .choices__item,
+    .choices__list[aria-expanded] .choices__item {
+        @apply block cursor-pointer border-t border-gray-300 py-1.5 px-3 text-sm font-medium text-gray-500 hover:bg-green-50  hover:text-green-700;
+    }
+
+    .choices__list--dropdown .choices__item--selectable.is-highlighted,
+    .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+        @apply bg-green-50 text-green-700;
+    }
+    .choices__list--single {
+        padding: 5px 18px 5px 9px;
+    }
+
+    .choices__list--multiple {
+        padding-left: 5px;
+        .choices__item {
+            @apply mt-1 mr-1 rounded-md border border-gray-300 bg-gray-100 py-1 pl-2.5 pt-0 pr-7 text-sm font-normal text-gray-500;
+        }
+
+        .choices__item.is-highlighted {
+            @apply border-gray-300 bg-gray-100 text-gray-500;
+        }
+    }
+}
+
+div.choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 0.25rem;
+}
+
+.choices .choices__inner {
+    min-height: 10px;
+    @apply py-1 px-4;
+}
+
+.table-input {
+    .choices .choices__inner {
+        min-height: 10px;
+        border-radius: 0;
+        @apply mt-1 block w-full border-0 border-b bg-transparent p-0 text-sm text-gray-500 focus:outline-none;
+    }
+}
+
+.choices[data-type*="select-multiple"] .choices__inner .choices__button,
+.choices[data-type*="text"] .choices__inner .choices__button {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACPSURBVHgBdU9tEYMwDE2iYHOAlM1BKQI2B2MKNgtTsJsC6oBZwAEOAAMJLxztP3LXa5u8r/AUwolFvqb6PKc00l5L0zzUjAXN2YgGgHqAq20Y48vMWlJNnBlTjG98bjgJhADFqysWgNdc1z0xX/bh33tSPCGLYQXpj2fKdlI8ie4bs+tavH85Ex9t4ZlwjSsaME2K5G/+uQAAAABJRU5ErkJggg==");
+    opacity: 1;
+    @apply border-l-0;
+}

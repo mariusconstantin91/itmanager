@@ -1,0 +1,28 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@import "variables";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+@import "mixins";
+@import "~choices.js/src/styles/choices.scss";
+// @import "components/*";
+
+@import "flatpickr/dist/flatpickr.min.css";
+// @import "components/*";
+
+// @import "flatpickr/dist/flatpickr.min.css";
+
+// @import "flatpickr/dist/themes/airbnb.css";
+
+@import "custom";
+@layer components {
+    @import "components/all.scss";
+}

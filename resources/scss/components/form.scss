@@ -1,0 +1,6 @@
+.input-styles {
+    @apply block w-full rounded-md border border-gray-300 bg-transparent py-2.5 pl-3.5 pr-3.5 text-sm font-normal text-gray-500 placeholder-gray-500 transition duration-150 ease-in-out focus:border-gray-300 focus:outline-none;
+    &.search-input {
+        @apply rounded-lg bg-white py-2 pl-8;
+    }
+}
