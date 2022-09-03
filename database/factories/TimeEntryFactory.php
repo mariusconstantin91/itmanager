@@ -19,7 +19,7 @@ class TimeEntryFactory extends Factory
     public function definition()
     {
         $task = Task::inRandomOrder()->first();
-        $user = User::inRandomOrder()->first();
+        $user = $task->users()->inRandomOrder()->first();
         $project = $task->project;
 
         $startAt = $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:00');
@@ -28,7 +28,7 @@ class TimeEntryFactory extends Factory
         return [
             'start_at' => $startAt,
             'end_at' => $endAt,
-            'description' => $this->faker->words(10, true),
+            'description' => $this->faker->realText(),
             'task_id' => $task ? $task->id : Task::factory(),
             'user_id' => $user ? $user->id : User::factory(),
             'project_id' => $project ? $project->id : Project::factory(),

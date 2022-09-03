@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'address_line_2' => $this->faker->word(),
             'country_id' => $country ? $country->id : Country::factory(),
             'position' => $this->faker->word(),
-            'salary' => $this->faker->numberBetween(400, 10000),
+            'salary' => $this->faker->numberBetween(400, 5000),
             'role_id' => $role ? $role->id : Role::factory()
         ];
     }

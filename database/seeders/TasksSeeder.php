@@ -7,6 +7,7 @@ use App\Models\Skill;
 use App\Models\Tag;
 use App\Models\Task;
 use App\Models\TaskGroup;
+use App\Models\TimeEntry;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,11 +20,11 @@ class TasksSeeder extends Seeder
      */
     public function run()
     {
-        $tasks = Task::factory()->count(20)->create();
+        $tasks = Task::factory()->count(300)->create();
 
         $tags = Tag::all();
         $skills = Skill::all();
-        $users = User::all();
+        $users = User::whereIn('role_id',[4,3])->get();
         $taskGroups = TaskGroup::all();
 
         // Populate the pivot table
@@ -52,7 +53,6 @@ class TasksSeeder extends Seeder
 
             $taskGroupIds = $taskGroups->random(rand(1, 3))->pluck('id')->toArray();
             $task->taskGroups()->sync($taskGroupIds);
-            
         });
     }
 }

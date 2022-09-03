@@ -16,7 +16,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         $task = Task::inRandomOrder()->first();
-        $user = User::inRandomOrder()->first();
+        $user = $task->users()->inRandomOrder()->first();
 
         return [
             'comment' => $this->faker->text(),
