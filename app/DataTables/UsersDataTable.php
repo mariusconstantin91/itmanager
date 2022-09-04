@@ -109,9 +109,9 @@ class UsersDataTable extends DataTable
             Column::text('position'),
             Column::text('email'),
             Column::text('phone'),
-            Column::text('country.name')
-                ->setSortRelationship('countries', 'countries.name', 'country_id', 'countries.id'),
-            Column::text('city'),
+            Column::view('skills')
+                ->setSortable(false)
+                ->setView('datatable::columns.tasks_skills'),
             Column::text('salary', 'salary', 'Salary($)'),
         ]);
 

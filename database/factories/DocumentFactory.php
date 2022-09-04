@@ -18,7 +18,7 @@ class DocumentFactory extends Factory
         $document = [
             'name' => $this->faker->unique()->words(3, true),
             'type' => $this->faker->randomElement(['info', 'cv', 'notification', 'application', 'contract']),
-            'path' => 'documents/'. $this->fake->asciify('********************') . '.pdf',
+            'path' => 'documents/'. $this->faker->asciify('********************') . '.pdf',
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
             'user_id' => User::inRandomOrder()->first()->id,
         ];

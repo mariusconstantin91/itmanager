@@ -19,7 +19,7 @@ class Contact extends Model
     {
         $authUser = auth()->user();
         static::addGlobalScope('restriction', function (Builder $builder) use ($authUser) {
-            if ($authUser->hasAnyRole(['admin'])) {
+            if (!$authUser || $authUser->hasAnyRole(['admin'])) {
                 $builder;
             } elseif ($authUser->hasAnyRole(['pr_manager'])) {
                 $builder->whereHas('client.projects.users', function ($query) use ($authUser) {

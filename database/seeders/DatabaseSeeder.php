@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DocumentsSeeder::class);
         $this->call(HolidaysSeeder::class);
         \App\Models\Client::factory(6)->create();
-        \App\Models\Project::factory(20)->create();
+        $this->call(ProjectsSeeder::class);
         \App\Models\TaskGroup::factory(20)->create();
         $this->call(TasksSeeder::class);
         \App\Models\TimeEntry::factory(3000)->create();

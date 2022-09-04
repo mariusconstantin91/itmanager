@@ -15,7 +15,7 @@ class ProjectFactory extends Factory
      */
     public function definition()
     {
-        $startDate = Carbon::createFromFormat('Y-m-d H:i:s', $this->faker->dateTimeBetween('-1 years'));
+        $startDate = Carbon::createFromFormat('Y-m-d H:i:s', $this->faker->dateTimeBetween('-1 years')->format('Y-m-d H:i:s'));
         $deadlineDate = clone $startDate->addDays(rand(100, 1000));
         $softDateline = clone $deadlineDate->subDays(rand(10, 30));
 

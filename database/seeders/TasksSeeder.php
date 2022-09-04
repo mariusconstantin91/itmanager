@@ -24,7 +24,7 @@ class TasksSeeder extends Seeder
 
         $tags = Tag::all();
         $skills = Skill::all();
-        $users = User::whereIn('role_id',[4,3])->get();
+        $users = User::with('skills')->where('role_id', 4)->get();
         $taskGroups = TaskGroup::all();
 
         // Populate the pivot table
@@ -48,8 +48,20 @@ class TasksSeeder extends Seeder
 
             $task->skills()->sync($skillsIds);
 
-            $usersIds = $users->random(rand(1, 3))->pluck('id')->toArray();
-            $task->users()->sync($usersIds);
+            $user = $users->random();
+            $task->users()->sync([$user->id]);
+            $task->project->users()->attach([$user->id]);
+
+            $taskSkillsIds = [];
+            if (count($user->skills)) {
+                $user->skills->random(rand(1, count($user->skills)))->pluck('id')
+                    ->each(function ($item) use (&$taskSkillsIds) {
+                        $taskSkillsIds[$item] = [
+                            'importance' => rand(0, 4),
+                        ];
+                    })->toArray();
+                $task->skills()->attach($taskSkillsIds);
+            }
 
             $taskGroupIds = $taskGroups->random(rand(1, 3))->pluck('id')->toArray();
             $task->taskGroups()->sync($taskGroupIds);

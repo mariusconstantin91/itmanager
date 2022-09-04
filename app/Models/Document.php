@@ -19,7 +19,7 @@ class Document extends Model
     {
         $authUser = auth()->user();
         static::addGlobalScope('restriction', function (Builder $builder) use ($authUser) {
-            if ($authUser->hasAnyRole(['admin', 'pr_manager', 'hr_manager'])) {
+            if (!$authUser || $authUser->hasAnyRole(['admin', 'pr_manager', 'hr_manager'])) {
                 $builder;
             } else {
                 $builder->where('user_id', $authUser->id);

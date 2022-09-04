@@ -64,16 +64,16 @@ class UsersSeeder extends Seeder
         User::factory()->count(30)->create();
 
         $users = User::where('role_id', 4)->get();
+
         foreach($users as $user) {
-            $n = rand(1, 4);
+            $n = rand(2, 5);
             $sync = [];
             for($i=0; $i<$n; $i++) {
-                $sync[] = [
-                    rand(1, 25) => ['importance' => rand(0, 4)],
-                ];
+                $sync[rand(1, 25)] = ['importance' => rand(0, 4)];
             }
+            $user->skills()->sync($sync);
         }
 
-        $user->skills()->sync($sync);
+
     }
 }

@@ -19,7 +19,7 @@ class Comment extends Model
     {
         $authUser = auth()->user();
         static::addGlobalScope('restriction', function (Builder $builder) use ($authUser) {
-            if ($authUser->hasAnyRole(['admin'])) {
+            if (!$authUser || $authUser->hasAnyRole(['admin'])) {
                 $builder;
             } elseif ($authUser->hasAnyRole(['pr_manager', 'user'])) {
                 $builder->where(function ($query) use ($authUser) {

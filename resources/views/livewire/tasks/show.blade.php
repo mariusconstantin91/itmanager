@@ -22,7 +22,7 @@
                                 </tr>
                                 <tr class="my-2.5">
                                     <td class="px-1"><span class="font-medium">Status:</span></td>
-                                    <td class="px-1"> {{ $this->task->status }} </td>
+                                    <td class="px-1"> {{ ucwords(str_replace('_', ' ', $this->task->status)) }} </td>
                                 </tr>
                                 <tr class="my-2.5">
                                     <td class="px-1"><span class="font-medium">Priority:</span></td>
@@ -86,13 +86,6 @@
                     <livewire:datatable::datatable :datatable-class="$datatableUsers">
                     </livewire:datatable::datatable wire:key="users-datatable">
                 </x-panel>
-                <x-panel label="Time Entries" wrapperExtraClasses="mt-6">
-                    <livewire:datatable::datatable :datatable-class="$datatableTimeEntries">
-                    </livewire:datatable::datatable wire:key="time-entries-datatable">
-                </x-panel>
-                <x-panel label="Description" wrapperExtraClasses="mt-6">
-                    {{ $this->task->description }}
-                </x-panel>
                 <x-panel label="Add time entry" wrapperExtraClasses="mt-6">
                     <div x-data="{ showSuccessAlert: 'true' }">
                         <x-alerts.success :message="session()->get('messageTimeEntry')"/>
@@ -145,6 +138,13 @@
                             </button>
                         </div>
                     </div>
+                </x-panel>
+                <x-panel label="Time Entries" wrapperExtraClasses="mt-6">
+                    <livewire:datatable::datatable :datatable-class="$datatableTimeEntries">
+                    </livewire:datatable::datatable wire:key="time-entries-datatable">
+                </x-panel>
+                <x-panel label="Description" wrapperExtraClasses="mt-6">
+                    {{ $this->task->description }}
                 </x-panel>
                 <x-panel label="Comments" wrapperExtraClasses="mt-6">
                     <x-comments :comments="$this->comments" addFunction="addComment" deleteFunction="deleteComment"/>

@@ -16,15 +16,15 @@ class HolidayFactory extends Factory
      */
     public function definition()
     {
-        $startDate = Carbon::createFromFormat('Y-m-d H:i:s', $this->faker->dateTimeBetween('-1 years'));
+        $startDate = Carbon::createFromFormat('Y-m-d H:i:s', $this->faker->dateTimeBetween('-1 years')->format('Y-m-d H:i:s'));
         $endDate = clone $startDate->addDays(rand(0, 10));
 
         $holiday = [
-            'path' => null,
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
             'user_id' => User::inRandomOrder()->first()->id,
             'start_date' => $startDate->format('Y-m-d'),
             'end_date' => $endDate->format('Y-m-d'),
+            'note' => $this->faker->realText(),
         ];
 
         if ($holiday['status'] == 'approved') {
